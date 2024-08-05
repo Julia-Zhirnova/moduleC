@@ -12,11 +12,11 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         
-        $validator = Validator::make($request->all(), [
-            'email' => 'required',
-            'password' => 'required',
+        $validator = Validator::make($request->all(), [            
             'first_name' => 'required',
-            'last_name' => 'required'
+            'last_name' => 'required',
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -27,11 +27,11 @@ class AuthController extends Controller
             ]);                
         }
 
-        $user = User::create([
-            'email' => $request -> email,
-            'password' => $request -> password,
+        $user = User::create([            
             'first_name' => $request -> first_name,
             'last_name' => $request -> last_name,
+            'email' => $request -> email,
+            'password' => $request -> password,
             'token' => Str::random(35)
         ]);
 
