@@ -59,5 +59,25 @@ class AuthController extends Controller
             'message' => $validator->errors()
             ]);                
         }
+
+        $user = User::where('email', $request->email)->where('password', $request->password)->first();
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'code' => 401,
+                'message' => 'Authorization failed'
+            ]);
+        }
+
+        $token = $user->token = Str::random(35);
+        $user->save();
+
+        return response()->json([
+            'success' => true,
+            'code' => 200,
+            'message' => 'Success',
+            'token' => $token
+        ]);
+    
     }
 }
