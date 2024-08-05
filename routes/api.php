@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('registration', [\App\Http\Controllers\AuthController::class, 'register']);
+Route::get('authorization', [\App\Http\Controllers\AuthController::class, 'login']);
