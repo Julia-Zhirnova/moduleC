@@ -16,4 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('registration', [\App\Http\Controllers\AuthController::class, 'register']);
 Route::post('authorization', [\App\Http\Controllers\AuthController::class, 'login']);
-Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+
+Route::group(['middleware' => 'MiddlewareAuth'], function () {
+    Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+});

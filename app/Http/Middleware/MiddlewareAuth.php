@@ -17,7 +17,7 @@ class MiddlewareAuth
     {
         if (!$request->bearerToken()) {
             return response()->json([
-            'message' -> 'Login failed'
+                'message' => 'Login failed'
             ]);
         }
         
@@ -25,6 +25,7 @@ class MiddlewareAuth
         
         if (!$user) {
             return response()->json([
+                'message' => 'Login failed'
             ]);
         }
         return $next($request);
