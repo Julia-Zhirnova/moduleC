@@ -34,5 +34,13 @@ class AuthController extends Controller
             'last_name' => $request -> last_name,
             'token' => Str::random(35)
         ]);
+
+        return response()->json([
+            'success' => true,
+            'code' => 201,
+            'message' => 'Success',
+            'token' => $user->token
+            ]);
+
     }    
 }
