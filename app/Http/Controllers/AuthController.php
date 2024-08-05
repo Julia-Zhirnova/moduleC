@@ -87,6 +87,9 @@ class AuthController extends Controller
         $user->update([
             'token' => NULL,
         ]);
+
+        return response()->json([], 204);
+        
     }    
     
 }
