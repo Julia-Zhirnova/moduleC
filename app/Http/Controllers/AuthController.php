@@ -78,6 +78,15 @@ class AuthController extends Controller
             'message' => 'Success',
             'token' => $token
         ]);
-    
     }
+
+    public function logout(Request $request)
+    {
+        $user = User::where('token', $request->bearerToken())->first();
+        
+        $user->update([
+            'token' => NULL,
+        ]);
+    }    
+    
 }
