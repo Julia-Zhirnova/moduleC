@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('registration', [\App\Http\Controllers\AuthController::class, 'register']);
 Route::post('authorization', [\App\Http\Controllers\AuthController::class, 'login']);
 
+
 Route::group(['middleware' => 'MiddlewareAuth'], function () {
+    Route::post('files', [\App\Http\Controllers\AuthController::class, 'upload']);
     Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 });
