@@ -70,7 +70,7 @@ class FileController extends Controller
             ], 403);
         } */
 
-       /* $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'name' => 'required'
         ]);
 
@@ -82,7 +82,7 @@ class FileController extends Controller
             ]);                
         }
 
-        $fileId->update([
+        /*$fileId->update([
             'file_name' => $request->name,
         ]);
 
@@ -92,11 +92,11 @@ class FileController extends Controller
             'message' => 'Renamed',
         ]); */
     }
-    /*
+    
 
     public function destroy(Request $request, $file_id)
     {
-        $fileId = File::where('file_id', $file_id)->first();
+       /* $fileId = File::where('file_id', $file_id)->first();
         $user = User::where('token', $request->bearerToken())->first();
         $userId = File::where('author_id', $user->id)->first();
         
@@ -121,12 +121,12 @@ class FileController extends Controller
                 'code' => 200,
                 'message' => 'File deleted'
             ]
-        );
+        );*/
     }
 
     public function download(Request $request, $file_id)
     {
-        $fileId = File::where('file_id', $file_id)->first();
+       /* $fileId = File::where('file_id', $file_id)->first();
         $user = User::where('token', $request->bearerToken())->first();
         $userId = File::where('author_id', $user->id)->first();
         
@@ -145,6 +145,6 @@ class FileController extends Controller
 
         $path = url("/storage/{$fileId->file_name}");
 
-        return response()->download($path);
-    }*/
+        return response()->download($path); */
+    }
 }
