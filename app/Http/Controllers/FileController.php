@@ -52,18 +52,14 @@ class FileController extends Controller
     public function show(Request $request)
     {
         $user = User::where('token', $request->bearerToken())->first();
-        $userId = File::where('author_id', $user->id)->first();
-
-        $filename = $userId->file_name   
-
-        $file_id = $userId->file_id        
+        $userId = File::where('author_id', $user->id)->first();                
 
         return response()->json([
             'success' => true,
             'code' => 200,
             'message' => 'Success',
-            'name' => $filename,            
-            'file_id' => $file_id
+            'name' => $userId->file_name,            
+            'file_id' => $userId->file_id
         ]);
     }
 
