@@ -97,10 +97,8 @@ class FileController extends Controller
     public function destroy(Request $request, $file_id)
     {
         $fileId = File::where('file_id', $file_id)->first();
-        $userID = User::where('token', $request->bearerToken())->first();
-        /* 
-        $user = User::where('token', $request->bearerToken())->first();
-        $userId = File::where('author_id', $user->id)->first();*/
+        $user = User::where('token', $request->bearerToken())->first();        
+        $userId = File::where('author_id', $user->id)->first();        
         
         if (!$fileId) {
             return response()->json(     
@@ -111,12 +109,11 @@ class FileController extends Controller
             );
         }
 
-        /*
         if (!$userId) {
             return response()->json([
                 'message' => 'Forbidden for you'
             ], 403);
-        }*/
+        }
 
         $fileId->delete();
             
@@ -132,9 +129,8 @@ class FileController extends Controller
     public function download(Request $request, $file_id)
     {
         $fileId = File::where('file_id', $file_id)->first();
-       /* 
-        $user = User::where('token', $request->bearerToken())->first();
-        $userId = File::where('author_id', $user->id)->first();*/
+        $user = User::where('token', $request->bearerToken())->first();        
+        $userId = File::where('author_id', $user->id)->first();
         
         if (!$fileId) {
             return response()->json(     
@@ -144,18 +140,18 @@ class FileController extends Controller
                 ]
             );
         }
-        /*
-
+        
         if (!$userId) {
             return response()->json([
                 'message' => 'Forbidden for you'
             ], 403);
-        } */
+        }
 
         $path = url("/storage/{$fileId->file_name}");
         $file_name = '{$fileId->file_name}';
         
-       /* return response()->json(     
+       /* проверка, что путь видит 
+       return response()->json(     
             [   
             'message' => $path,
             'code' => 404
