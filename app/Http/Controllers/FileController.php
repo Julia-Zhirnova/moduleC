@@ -50,11 +50,11 @@ class FileController extends Controller
 
     public function update(Request $request, $file_id)
     {
-      /*  $fileId = File::where('file_id', $file_id)->first();
+        $fileId = File::where('file_id', $file_id)->first();
         /*$user = User::where('token', $request->bearerToken())->first();
         $userId = File::where('author_id', $user->id)->first();*/
 
-      /*  if (!$fileId) {
+        if (!$fileId) {
             return response()->json(     
                 [   
                 'message' => 'Not found',
@@ -62,7 +62,6 @@ class FileController extends Controller
                 ]
             );
         }
-
 
       /*  if (!$userId) {
             return response()->json([
