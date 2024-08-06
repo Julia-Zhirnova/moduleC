@@ -23,7 +23,7 @@ class FileController extends Controller
                 'message' => $validation->errors(),
             ]);
         }
-
+/*
         $file = $request->file('files');
 
         $filename = $file->getClientOriginalName();
@@ -33,6 +33,6 @@ class FileController extends Controller
             'message' => 'Файл успешно загружен!',
             'filename' => $filename
         ]);
-
+*/
     }
 }
