@@ -11,7 +11,7 @@ class FileController extends Controller
 {
     public function upload(Request $request)
     {
-        $userId = User::where('token', $request->bearerToken())->first();
+        //$userId = User::where('token', $request->bearerToken())->first();
 
         $validator = Validator::make($request->all(), [
             'files' => 'required'
