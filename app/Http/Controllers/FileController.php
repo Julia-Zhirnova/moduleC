@@ -95,17 +95,21 @@ class FileController extends Controller
 
     public function destroy(Request $request, $file_id)
     {
-       /* $fileId = File::where('file_id', $file_id)->first();
+        $fileId = File::where('file_id', $file_id)->first();
+        /* 
         $user = User::where('token', $request->bearerToken())->first();
-        $userId = File::where('author_id', $user->id)->first();
+        $userId = File::where('author_id', $user->id)->first();*/
         
         if (!$fileId) {
-            return response()->json([
+            return response()->json(     
+                [   
                 'message' => 'Not found',
                 'code' => 404
-            ]);
+                ]
+            );
         }
 
+        /*
         if (!$userId) {
             return response()->json([
                 'message' => 'Forbidden for you'
@@ -125,16 +129,20 @@ class FileController extends Controller
 
     public function download(Request $request, $file_id)
     {
-       /* $fileId = File::where('file_id', $file_id)->first();
+        $fileId = File::where('file_id', $file_id)->first();
+       /* 
         $user = User::where('token', $request->bearerToken())->first();
-        $userId = File::where('author_id', $user->id)->first();
+        $userId = File::where('author_id', $user->id)->first();*/
         
         if (!$fileId) {
-            return response()->json([
+            return response()->json(     
+                [   
                 'message' => 'Not found',
                 'code' => 404
-            ]);
+                ]
+            );
         }
+        /*
 
         if (!$userId) {
             return response()->json([
