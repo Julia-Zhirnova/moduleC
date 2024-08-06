@@ -12,7 +12,7 @@ class FileController extends Controller
 {
     public function upload(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($request->file('file'), [
             'files' => 'required'
         ]);
 
