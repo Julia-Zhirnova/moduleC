@@ -151,7 +151,7 @@ class FileController extends Controller
         } */
 
         $path = url("/storage/{$fileId->file_name}");
-        $file_name = 'custom_file_name.png';
+        $file_name = '{$fileId->file_name}';
         
         return response()->json(     
             [   
