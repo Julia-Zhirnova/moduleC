@@ -137,7 +137,7 @@ class FileController extends Controller
         if (!$fileId) {
             return response()->json(     
                 [   
-                'message' => 'Not found',
+                'message' => "/storage/{$fileId->file_name}",
                 'code' => 404
                 ]
             );
@@ -150,8 +150,8 @@ class FileController extends Controller
             ], 403);
         } */
 
-        $path = url("/storage/{$fileId->file_name}");
+       // $path = url("/storage/{$fileId->file_name}");
 
-        return response()->download($path); 
+       // return response()->download($path); 
     }
 }
