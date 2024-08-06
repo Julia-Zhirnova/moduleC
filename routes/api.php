@@ -19,6 +19,7 @@ Route::post('authorization', [\App\Http\Controllers\AuthController::class, 'logi
 
 
 Route::group(['middleware' => 'MiddlewareAuth'], function () {
-    Route::post('files', [\App\Http\Controllers\AuthController::class, 'upload']);
+    Route::post('files', [\App\Http\Controllers\FileController::class, 'upload']);
+    Route::patch('files/{jile_id', [\App\Http\Controllers\FileController::class, 'update']);
     Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 });
