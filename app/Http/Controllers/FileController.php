@@ -12,7 +12,7 @@ class FileController extends Controller
 {
     public function upload(Request $request)
     {
-        $validator = Validator::make($request->file('file'), [
+        $validator = Validator::make($request->all(), [
             'files' => 'required'
         ]);
 
@@ -20,10 +20,10 @@ class FileController extends Controller
             return response()->json([
                 'success' => false,
                 'code' => 422,
-                'message' => $validation->errors(),
+                'message' => $validator->errors(),
             ]);
         }
-/*
+
         $file = $request->file('files');
 
         $filename = $file->getClientOriginalName();
@@ -33,6 +33,6 @@ class FileController extends Controller
             'message' => 'Файл успешно загружен!',
             'filename' => $filename
         ]);
-*/
+
     }
 }
