@@ -40,9 +40,20 @@ class FileController extends Controller
             'code' => 200,
             'message' => 'Success',
             'name' => $filename,
-            'url' => url()->current() . '/' . $file_id
+            'url' => url()->current() . '/' . $file_id,
             'file_id' => $file_id
         ]);
-
+    }
+    public function update(Request $request, $file_id)
+    {
+        $fileId = File::where('file_id', $file_id)->first();
+        if (!$fileId) {
+            return response()->json(     
+                [   
+                'message' => 'Not found',
+                'code' => 404
+                ]
+            );
+        }
     }
 }
