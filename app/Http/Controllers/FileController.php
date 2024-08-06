@@ -12,6 +12,7 @@ class FileController extends Controller
     public function upload(Request $request)
     {
         $userId = User::where('token', $request->bearerToken())->first();
+
         $validator = Validator::make($request->all(), [
             'files' => 'required'
         ]);
@@ -46,7 +47,8 @@ class FileController extends Controller
             'file_id' => $file_id
         ]);
     }
-    public function update(Request $request, $file_id)
+
+   /* public function update(Request $request, $file_id)
     {
         $fileId = File::where('file_id', $file_id)->first();
         $user = User::where('token', $request->bearerToken())->first();
@@ -119,6 +121,7 @@ class FileController extends Controller
             ]
         );
     }
+
     public function download(Request $request, $file_id)
     {
         $fileId = File::where('file_id', $file_id)->first();
@@ -141,5 +144,5 @@ class FileController extends Controller
         $path = url("/storage/{$fileId->file_name}");
 
         return response()->download($path);
-    }
+    }*/
 }
