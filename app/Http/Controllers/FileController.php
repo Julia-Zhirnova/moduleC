@@ -35,7 +35,7 @@ class FileController extends Controller
         File::create([
             'file_name' => $filename,
             'file_id' => $file_id,
-            'author_id' => 1
+           // 'author_id' => 1
         ]);
 
         return response()->json([
