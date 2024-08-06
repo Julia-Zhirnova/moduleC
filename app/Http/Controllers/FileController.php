@@ -55,5 +55,28 @@ class FileController extends Controller
                 ]
             );
         }
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+            'success' => false,
+            'code' => 422,
+            'message' => $validator->errors()
+            ]);                
+        }
+
+        $fileId->update([
+            'file_name' => $request->name,
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'code' => 200,
+            'message' => 'Renamed',
+        ]);
+
     }
 }
