@@ -50,8 +50,8 @@ class FileController extends Controller
 
     public function update(Request $request, $file_id)
     {
-        /*$fileId = File::where('file_id', $file_id)->first();
-        $user = User::where('token', $request->bearerToken())->first();
+        $fileId = File::where('file_id', $file_id)->first();
+        /*$user = User::where('token', $request->bearerToken())->first();
         $userId = File::where('author_id', $user->id)->first();*/
 
         if (!$fileId) {
@@ -81,7 +81,7 @@ class FileController extends Controller
             ]);                
         }
 
-     /*   $fileId->update([
+        $fileId->update([
             'file_name' => $request->name,
         ]);
 
@@ -89,7 +89,7 @@ class FileController extends Controller
             'success' => true,
             'code' => 200,
             'message' => 'Renamed',
-        ]); */
+        ]); 
     }
 
     public function destroy(Request $request, $file_id)
