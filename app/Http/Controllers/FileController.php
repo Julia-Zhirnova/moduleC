@@ -12,7 +12,6 @@ class FileController extends Controller
 {
     public function upload(Request $request)
     {
-        //$userId = User::where('token', $request->bearerToken())->first();
         $userID = User::where('token', $request->bearerToken())->first();
 
         $validator = Validator::make($request->all(), [
@@ -53,8 +52,8 @@ class FileController extends Controller
     public function update(Request $request, $file_id)
     {
         $fileId = File::where('file_id', $file_id)->first();
-        /*$user = User::where('token', $request->bearerToken())->first();
-        $userId = File::where('author_id', $user->id)->first();*/
+        $user = User::where('token', $request->bearerToken())->first();        
+        $userId = File::where('author_id', $user->id)->first();
 
         if (!$fileId) {
             return response()->json(     
@@ -65,11 +64,11 @@ class FileController extends Controller
             );
         }
 
-      /*  if (!$userId) {
+        if (!$userId) {
             return response()->json([
                 'message' => 'Forbidden for you'
             ], 403);
-        } */
+        } 
 
         $validator = Validator::make($request->all(), [
             'name' => 'required'
@@ -98,6 +97,7 @@ class FileController extends Controller
     public function destroy(Request $request, $file_id)
     {
         $fileId = File::where('file_id', $file_id)->first();
+        $userID = User::where('token', $request->bearerToken())->first();
         /* 
         $user = User::where('token', $request->bearerToken())->first();
         $userId = File::where('author_id', $user->id)->first();*/
