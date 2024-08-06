@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -12,6 +13,7 @@ class FileController extends Controller
     public function upload(Request $request)
     {
         //$userId = User::where('token', $request->bearerToken())->first();
+        $userID = User::where('token', $request->bearerToken())->first();
 
         $validator = Validator::make($request->all(), [
             'files' => 'required'
@@ -35,7 +37,7 @@ class FileController extends Controller
         File::create([
             'file_name' => $filename,
             'file_id' => $file_id,
-            'author_id' => 2
+            'author_id' => $userID->id
         ]);
 
         return response()->json([
@@ -153,12 +155,12 @@ class FileController extends Controller
         $path = url("/storage/{$fileId->file_name}");
         $file_name = '{$fileId->file_name}';
         
-        return response()->json(     
+       /* return response()->json(     
             [   
             'message' => $path,
             'code' => 404
             ]
-        );        
+        );        */
 
         return response()->download($path, $file_name); 
     }
