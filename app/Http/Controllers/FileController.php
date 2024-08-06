@@ -54,9 +54,9 @@ class FileController extends Controller
         $user = User::where('token', $request->bearerToken())->first();
         $userId = File::where('author_id', $user->id)->first();
 
-        $filename = File::where('file_name', $userId->file_name)->first();   
+        $filename = $userId->file_name   
 
-        $file_id = File::where('file_id', $userId->file_id)->first();        
+        $file_id = $userId->file_id        
 
         return response()->json([
             'success' => true,
