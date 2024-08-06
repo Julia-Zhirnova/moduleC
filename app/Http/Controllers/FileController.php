@@ -114,7 +114,7 @@ class FileController extends Controller
             return response()->json([
                 'message' => 'Forbidden for you'
             ], 403);
-        }
+        }*/
 
         $fileId->delete();
             
@@ -124,7 +124,7 @@ class FileController extends Controller
                 'code' => 200,
                 'message' => 'File deleted'
             ]
-        );*/
+        );
     }
 
     public function download(Request $request, $file_id)
