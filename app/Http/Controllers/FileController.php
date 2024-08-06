@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class FileController extends Controller
 {
@@ -27,9 +28,20 @@ class FileController extends Controller
         $filename = $file->getClientOriginalName();
         $file->storeAs('public', $filename);
 
+        $file_id = Str::random(10);
+
+        File::create([
+            'file_name' => $filename,
+            'file_id' => $file_id,
+        ]);
+
         return response()->json([
-            'message' => 'Файл успешно загружен!',
-            'filename' => $filename
+            'success' => true,
+            'code' => 200,
+            'message' => 'Success',
+            'name' => $filename,
+            'url' => url()->current() . '/' . $file_id
+            'file_id' => $file_id
         ]);
 
     }
