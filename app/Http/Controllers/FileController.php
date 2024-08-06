@@ -81,7 +81,7 @@ class FileController extends Controller
             ]);                
         }
 
-        /*$fileId->update([
+        $fileId->update([
             'file_name' => $request->name,
         ]);
 
@@ -89,7 +89,7 @@ class FileController extends Controller
             'success' => true,
             'code' => 200,
             'message' => 'Renamed',
-        ]); */
+        ]); 
     }
     
 
