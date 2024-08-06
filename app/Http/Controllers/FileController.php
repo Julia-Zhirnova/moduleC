@@ -148,10 +148,10 @@ class FileController extends Controller
             return response()->json([
                 'message' => 'Forbidden for you'
             ], 403);
-        }
+        } */
 
         $path = url("/storage/{$fileId->file_name}");
 
-        return response()->download($path); */
+        return response()->download($path); 
     }
 }
