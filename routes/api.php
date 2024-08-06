@@ -21,5 +21,7 @@ Route::post('authorization', [\App\Http\Controllers\AuthController::class, 'logi
 Route::group(['middleware' => 'MiddlewareAuth'], function () {
     Route::post('files', [\App\Http\Controllers\FileController::class, 'upload']);
     Route::patch('files/{file_id}', [\App\Http\Controllers\FileController::class, 'update']);
+    Route::delete('files/{file_id}', [\App\Http\Controllers\FileController::class, 'destroy']);
+    Route::get('files/{file_id}', [\App\Http\Controllers\FileController::class, 'download']);
     Route::get('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
 });

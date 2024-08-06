@@ -13,7 +13,8 @@ class File extends Model
     
     protected $fillable = [
         'file_name',
-        'file_id'
+        'file_id',
+        'author_id'
     ];
 
     public $timestamps = false;
